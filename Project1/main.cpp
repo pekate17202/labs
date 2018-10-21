@@ -1,7 +1,13 @@
 #include "rna.h"
 #include <iostream>
-using namespace std;
-int main() {
+#include<gtest/gtest.h>
+//using namespace std;
+int main(int argc, char **argv) {
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
+}
+/*int main() {
+
 	RNA rna(Nucleotide::G, 100);
 	cout << rna.capacity() << " " << rna[3] << "\n";
 	rna[50] = C;
@@ -13,4 +19,4 @@ int main() {
 	cout << rna[0] << " " << rna[1] << " " << rna[2] << " " << rna.capacity() << "\n";
 	char k;
 	cin >> k;
-}
+}*/

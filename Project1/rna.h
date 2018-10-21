@@ -1,5 +1,6 @@
 #pragma once
-
+#include<unordered_map>
+using namespace std;
 enum Nucleotide
 {
 	A, C, G, T
@@ -37,5 +38,9 @@ public:
 	size_t cardinality(Nucleotide);
 	void trim(size_t last_index);
 	size_t last_nucl_index();
-	//RNA operator+ (const RNA & r1, const RNA & r2);
+	unordered_map< Nucleotide, int, std::hash<int> > cardinality();
+	friend RNA operator+(RNA & r1, RNA & r2);
+	friend bool operator==(const RNA & r1, const RNA & r2);
 };
+RNA operator+ (RNA & r1, RNA & r2);
+bool operator==(const RNA & r1, const RNA & r2);
