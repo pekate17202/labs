@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1", "Project1\Project1.vcxproj", "{CC1F902C-47B2-42A8-82E9-B49BA1A98BD4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rna_dna", "Project1\Project1.vcxproj", "{CC1F902C-47B2-42A8-82E9-B49BA1A98BD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26C55763-7569-40EE-95BD-176A08F7E0FC}"
+	ProjectSection(SolutionItems) = preProject
+		DNK-task_1 (1).docx = DNK-task_1 (1).docx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
