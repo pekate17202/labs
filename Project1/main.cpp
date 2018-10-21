@@ -11,6 +11,6 @@ int main() {
 	cout << rna[1] << " " << rna[5] << " " << rna[10] << "\n";
 	rna.trim(3);
 	cout << rna[0] << " " << rna[1] << " " << rna[2] << " " << rna.capacity() << "\n";
-	char k;
-	cin >> k;
+	char g;
+	cin >> g;
 }
