@@ -1,8 +1,10 @@
+#include <iostream>
 #include "rna.h"
+using namespace std;
 RNA::RNA() {
 	length = 0;
 	nucl_number = 0;
-	ref = reference(0, nucl_array);
+	cout << "RNA()\n";
 }
 RNA::RNA(Nucleotide N, size_t num) {
 	length = num * 2 / sizeof(size_t) / 8 + 1;
@@ -11,18 +13,21 @@ RNA::RNA(Nucleotide N, size_t num) {
 	for (int i = 0; i < num; i++) {
 		(*this)[i] = N;
 	}
-	ref = reference(0, nucl_array);
+	cout << "RNA(Nucleotide, size_t)\n";
 }
 RNA::~RNA() {
 	delete[] nucl_array;
+	cout << "~RNA\n";
 }
-RNA::reference::reference(size_t pos, size_t* arr) {
+RNA::reference::reference(size_t pos, RNA* rna) {
 	position = pos;
-	rna_nucl_array = arr;
+	r_rna = rna;
+	cout << "reference(size_t, RNA*)\n";
 }
 RNA::reference::reference(const reference& ref) {
 	position = ref.position;
-	rna_nucl_array = ref.rna_nucl_array;
+	r_rna = ref.r_rna;
+	cout << "reference(const reference&)\n";
 }
 /*Nucleotide RNA::reference::value() {
 	size_t i = position * 2 / sizeof(size_t) / 8;
@@ -38,7 +43,7 @@ RNA::reference::reference(const reference& ref) {
 RNA::reference::operator Nucleotide () const {
 	size_t i = position * 2 / sizeof(size_t) / 8;
 	size_t sh = (position * 2) % (sizeof(size_t) * 8);
-	size_t val = (rna_nucl_array[i] & (3 << sh)) >> sh;
+	size_t val = (r_rna->nucl_array[i] & (3 << sh)) >> sh;
 	return Nucleotide(val);
 	//switch (val) {
 	//case 0: return Nucleotide::A;
@@ -47,17 +52,18 @@ RNA::reference::operator Nucleotide () const {
 	//case 3: return Nucleotide::T;
 }
 RNA::reference& RNA::reference::operator=(Nucleotide  N) {
-
+	cout << "reference[" << position << "]=" << N<< "\n"; 
 	size_t i = position * 2 / sizeof(size_t) / 8;
 	size_t sh = (position * 2) % (sizeof(size_t) * 8);
-	rna_nucl_array[i] = (rna_nucl_array[i] & (~(3 << sh))) | (N << sh);
+	r_rna->nucl_array[i] = (r_rna->nucl_array[i] & (~(3 << sh))) | (N << sh);
 	return *this;
 }
 RNA::reference& RNA::reference::operator=(const RNA::reference& ref) {
-	//operator=(Nucleotide(ref));
-	position = ref.position;
-	rna_nucl_array = ref.rna_nucl_array;
+	operator=(Nucleotide(ref));
 	return *this;
+}
+RNA::reference::~reference() {
+	cout << "~reference()\n";
 }
 RNA::RNA(const RNA & rna) {
 	length = rna.length;
@@ -65,6 +71,7 @@ RNA::RNA(const RNA & rna) {
 	for (int i = 0; i < length; ++i) {
 		nucl_array[i] = rna.nucl_array[i];
 	}
+	cout << "RNA(const RNA&)\n";
 }
 RNA& RNA::operator=(const RNA & rna) {
 	delete[] nucl_array;
@@ -78,26 +85,25 @@ RNA& RNA::operator=(const RNA & rna) {
 size_t RNA::capacity() {
 	return length;
 }
-RNA::reference& RNA::operator[](size_t pos) {
-	ref = reference(pos, nucl_array);
-	return ref;
+RNA::reference RNA::operator[](size_t pos) {
+	return reference(pos, this);
 }
 size_t RNA::cardinality(Nucleotide N) {
 	size_t count = 0;
 	for (int i = 0; i < nucl_number; i++) {
-		if (Nucleotide((*this)[i]) == N) count++;
+		if ((*this)[i] == N) count++;
 	}
 	return count;
 }
 void RNA::trim(size_t last_index) {
-	for (int i = last_index; i < nucl_number; i++) {
-		//
-		//
-	}
+	length = last_index * 2 / sizeof(size_t) / 8 + 1;
+	nucl_number = last_index;
+	size_t * rna_copy = nucl_array;
+	nucl_array = new size_t[length];
+	memcpy(nucl_array, rna_copy, length * sizeof(size_t));
+	delete[] rna_copy;
 }
 size_t RNA::last_nucl_index() {
 	return nucl_number;
 }
-RNA operator+(RNA & r1, RNA & r2) {
-
-}
+//RNA operator+(RNA & r1, RNA & r2)
