@@ -13,9 +13,16 @@ RNA::RNA(Nucleotide N, size_t num) {
 	}
 	ref = reference(0, nucl_array);
 }
+RNA::~RNA() {
+	delete[] nucl_array;
+}
 RNA::reference::reference(size_t pos, size_t* arr) {
 	position = pos;
 	rna_nucl_array = arr;
+}
+RNA::reference::reference(const reference& ref) {
+	position = ref.position;
+	rna_nucl_array = ref.rna_nucl_array;
 }
 /*Nucleotide RNA::reference::value() {
 	size_t i = position * 2 / sizeof(size_t) / 8;
@@ -81,4 +88,16 @@ size_t RNA::cardinality(Nucleotide N) {
 		if (Nucleotide((*this)[i]) == N) count++;
 	}
 	return count;
+}
+void RNA::trim(size_t last_index) {
+	for (int i = last_index; i < nucl_number; i++) {
+		//
+		//
+	}
+}
+size_t RNA::last_nucl_index() {
+	return nucl_number;
+}
+RNA operator+(RNA & r1, RNA & r2) {
+
 }

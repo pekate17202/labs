@@ -29,9 +29,13 @@ private:
 public:
 	RNA(Nucleotide, size_t);
 	RNA();
+	~RNA();
 	RNA(const RNA & rna);
 	RNA& operator=(const RNA & rna);
 	size_t capacity();
 	reference& operator[](size_t pos);
 	size_t cardinality(Nucleotide);
+	void trim(size_t last_index);
+	size_t last_nucl_index();
+	RNA operator+ (const RNA & r1, const RNA & r2);
 };
