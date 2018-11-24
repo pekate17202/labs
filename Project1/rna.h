@@ -51,7 +51,7 @@ public:
 	void push_back(Nucleotide);
 	Nucleotide pop_back();
 	bool is_ñomplementary(RNA &);
-	two_rna& split(size_t index);
+	two_rna split(size_t index);
 	friend two_rna;
 	RNA operator!();
 	//void resize

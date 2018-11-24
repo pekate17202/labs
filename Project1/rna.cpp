@@ -186,7 +186,7 @@ Nucleotide RNA::pop_back() {
 	delete[] rna_copy;
 	return N;
 }
-two_rna& RNA::split(size_t index) {
+two_rna RNA::split(size_t index) {
 	two_rna t;
 	t.rna1 = new RNA;
 	t.rna2 = new RNA;

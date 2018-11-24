@@ -91,3 +91,13 @@ TEST(test_rna, operator_split) {
 	delete t.rna1;
 	delete t.rna2;
 }
+
+TEST(test_rna, operator_not) {
+	RNA rna1(A, 100);
+	rna1[43] = C;
+	RNA rna2 = !rna1;
+
+	ASSERT_EQ(rna2.last_nucl_index(), rna1.last_nucl_index()) << "invalid number of nucleotides in rna2";
+	ASSERT_EQ(rna2[0], T) << "invalid first nucleotide";
+	ASSERT_EQ(rna2[43], G) << "invalid different nucleotide";
+}
