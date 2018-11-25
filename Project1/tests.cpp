@@ -1,5 +1,6 @@
 #include<gtest/gtest.h>
 #include "rna.h"
+#include "dna.h"
 TEST(test_rna, capacity){
 	RNA rna(A, 1000);
 	// length of internal array
@@ -100,4 +101,20 @@ TEST(test_rna, operator_not) {
 	ASSERT_EQ(rna2.last_nucl_index(), rna1.last_nucl_index()) << "invalid number of nucleotides in rna2";
 	ASSERT_EQ(rna2[0], T) << "invalid first nucleotide";
 	ASSERT_EQ(rna2[43], G) << "invalid different nucleotide";
+}
+
+TEST(test_rna, resize) {
+	RNA rna(A, 100);
+	rna.resize();
+	ASSERT_EQ(rna.last_nucl_index(), 100) << "invalid number of nucleotides in rna2";
+	ASSERT_EQ(rna[99], A) << "invalid first nucleotide";
+	ASSERT_EQ(rna[89], A) << "invalid different nucleotide";
+}
+
+TEST(test_rna, dna) {
+	RNA rna1(A, 100);
+	RNA rna2(T, 100);
+	DNA dna(rna1, rna2);
+	ASSERT_EQ(dna.get_first()[3], A) << "invalid dna";
+	//ASSERT_EQ(1, 1) << "1 is not equal 0";
 }

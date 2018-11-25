@@ -29,6 +29,12 @@
     <ClInclude Include="rna.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dna.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="memleaks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

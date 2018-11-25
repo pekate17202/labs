@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{CC1F902C-47B2-42A8-82E9-B49BA1A98BD4}</ProjectGuid>
     <RootNamespace>rna_dna</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
     <ProjectName>rna_dna</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,6 +118,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="dna.h" />
+    <ClInclude Include="memleaks.h" />
     <ClInclude Include="rna.h" />
   </ItemGroup>
   <ItemGroup>

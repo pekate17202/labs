@@ -1,5 +1,6 @@
 #pragma once
 #include<unordered_map>
+ 
 using namespace std;
 enum Nucleotide
 {
@@ -54,9 +55,13 @@ public:
 	two_rna split(size_t index);
 	friend two_rna;
 	RNA operator!();
-	//void resize
+	void resize();
 	//memory leaks 
 };
 RNA operator+ (RNA & r1, RNA & r2);
 bool operator==(const RNA & r1, const RNA & r2);
 bool operator!=(const RNA & r1, const RNA & r2);
+
+void* operator new(size_t size);
+void operator delete(void* p);
+

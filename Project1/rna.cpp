@@ -1,5 +1,6 @@
 #include <iostream>
 #include "rna.h"
+//int MEMLEAKS(0);
 using namespace std;
 //two_rna::~two_rna() {
 //	if (rna1 != nullptr)
@@ -179,7 +180,7 @@ void RNA::push_back(Nucleotide N) {
 Nucleotide RNA::pop_back() {
 	Nucleotide N = (*this)[nucl_number];
 	nucl_number -= 1;
-		length = nucl_number * 2 / sizeof(size_t) / 8 + 1;
+	length = nucl_number * 2 / sizeof(size_t) / 8 + 1;
 	size_t* rna_copy = nucl_array;
 	nucl_array = new size_t[length];
 	memcpy(nucl_array, rna_copy, length * sizeof(size_t));
@@ -213,3 +214,13 @@ RNA RNA::operator!() {
 	}
 	return rna;
 }
+
+void RNA::resize() {
+	size_t length_old = length;
+	length = nucl_number * 4 / sizeof(size_t) / 8 + 1;
+	size_t* rnacpy = nucl_array;
+	nucl_array = new size_t[length];
+	memcpy(nucl_array, rnacpy, length_old * sizeof(size_t));
+}
+
+
