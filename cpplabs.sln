@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DNK-task_1 (1).docx = DNK-task_1 (1).docx
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "calculator", "calculator\calculator.vcxproj", "{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -26,9 +28,20 @@ Global
 		{CC1F902C-47B2-42A8-82E9-B49BA1A98BD4}.Release|x64.Build.0 = Release|x64
 		{CC1F902C-47B2-42A8-82E9-B49BA1A98BD4}.Release|x86.ActiveCfg = Release|Win32
 		{CC1F902C-47B2-42A8-82E9-B49BA1A98BD4}.Release|x86.Build.0 = Release|Win32
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Debug|x64.ActiveCfg = Debug|x64
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Debug|x64.Build.0 = Debug|x64
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Debug|x86.ActiveCfg = Debug|Win32
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Debug|x86.Build.0 = Debug|Win32
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Release|x64.ActiveCfg = Release|x64
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Release|x64.Build.0 = Release|x64
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Release|x86.ActiveCfg = Release|Win32
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BA05A6E-E002-4402-8B32-4AEA3C80DDCF} = {26C55763-7569-40EE-95BD-176A08F7E0FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2F71601E-F58D-4DB3-B1EB-FE10BC26B073}
