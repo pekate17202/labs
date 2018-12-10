@@ -32,6 +32,42 @@ TEST_F(test_calc, POP) {
 	}
 	ASSERT_EQ(11, calc.top()) << calc.top() << " != 11";
 }
+TEST_F(test_calc, DEFINE) {
+	vector<string> cmds = { "DEFINE a 77", "PUSH a"};
+	for (int i = 0; i < cmds.size(); i++) {
+		command* cmd = command_creator::create_command(cmds[i]);
+		cmd->exec(&calc);
+		delete cmd;
+	}
+	ASSERT_EQ(77, calc.top()) << calc.top() << " != 77";
+}
+TEST_F(test_calc, PLUS) {
+	vector<string> cmds = { "PUSH 77", "PUSH 2", "+" };
+	for (int i = 0; i < cmds.size(); i++) {
+		command* cmd = command_creator::create_command(cmds[i]);
+		cmd->exec(&calc);
+		delete cmd;
+	}
+	ASSERT_EQ(79, calc.top()) << calc.top() << " != 79";
+}
+TEST_F(test_calc, MINUS) {
+	vector<string> cmds = { "PUSH 77", "PUSH 2", "-" };
+	for (int i = 0; i < cmds.size(); i++) {
+		command* cmd = command_creator::create_command(cmds[i]);
+		cmd->exec(&calc);
+		delete cmd;
+	}
+	ASSERT_EQ(75, calc.top()) << calc.top() << " != 75";
+}
+TEST_F(test_calc, COMMENT) {
+	vector<string> cmds = { "PUSH 345", "# PUSH 43",};
+	for (int i = 0; i < cmds.size(); i++) {
+		command* cmd = command_creator::create_command(cmds[i]);
+		cmd->exec(&calc);
+		delete cmd;
+	}
+	ASSERT_EQ(345, calc.top()) << calc.top() << " != 345";
+}
 TEST_F(test_calc, POPEX) {
 	vector<string> cmds = { "POP" };
 	try {
