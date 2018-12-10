@@ -2,12 +2,10 @@
 #include "rna.h"
 #include "dna.h"
 TEST(test_rna, capacity){
-	RNA rna(A, 1000);
-	// length of internal array
+	RNA rna(A, 1000000);
 	size_t allocLength = rna.capacity();
-	ASSERT_GE(allocLength, 1000 * 2 / 8 / sizeof(size_t)) << allocLength << " < 1000 * 2 / 8 / sizeof(uint)";
-	ASSERT_LT(allocLength, 1000 * 2 / 8 / sizeof(size_t) + 2) << allocLength << " > 1000 * 2 / 8 / sizeof(uint) + 2";
-	//ASSERT_EQ(1, 1) << "1 is not equal 0";
+	ASSERT_GE(allocLength, 1000000 * 2 / 8 / sizeof(size_t)) << allocLength << " < 1000 * 2 / 8 / sizeof(uint)";
+	ASSERT_LT(allocLength, 1000000 * 2 / 8 / sizeof(size_t) + 2) << allocLength << " > 1000 * 2 / 8 / sizeof(uint) + 2";
 }
 
 TEST(test_rna, cardinality){
